@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="RestApiTester.Views.ActionBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RestApiTester.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="前">
+                <GroupBox>
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <ToggleButton IsChecked="{Binding Parameter.DeleteS3File,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                              Style="{StaticResource MaterialDesignActionAccentToggleButton}"/>
+                                <TextBlock VerticalAlignment="Center" Text="実行前にS3ファイル削除"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="S3バケット名"/>
+                        <TextBox Grid.Column="1" Text="{Binding Parameter.DeleteS3Bucket,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch"/>
+                        <TextBlock Grid.Row="1" Text="S3キー"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Parameter.DeleteS3Key,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch"/>
+                    </Grid>
+                </GroupBox>
+            </TabItem>
+            <TabItem Header="後">
+                <GroupBox>
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <ToggleButton IsChecked="{Binding Parameter.ShowS3File,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                              Style="{StaticResource MaterialDesignActionAccentToggleButton}"/>
+                                <TextBlock VerticalAlignment="Center" Text="実行後にS3ファイルダウンロード"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="S3バケット名"/>
+                        <TextBox Grid.Column="1" Text="{Binding Parameter.ShowS3Bucket,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch"/>
+                        <TextBlock Grid.Row="1" Text="S3キー"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Parameter.ShowS3Key,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch"/>
+                    </Grid>
+                </GroupBox>
+            </TabItem>
+        </TabControl>        
+    </Grid>
+</UserControl>
